@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://bpu3jmyf7b15a"]
+
+[ext_resource type="Script" uid="uid://bmjcyghwv0t5o" path="res://lose_screen.gd" id="1_cbtnu"]
+[ext_resource type="Texture2D" uid="uid://b4jl5qbkg231m" path="res://LoseBG2.webp" id="2_6mmkj"]
+[ext_resource type="FontFile" uid="uid://b674iy48yx447" path="res://PixeloidSans-mLxMm.ttf" id="3_ed4nj"]
+[ext_resource type="Theme" uid="uid://dvnn2t2hnlw2q" path="res://new_theme.tres" id="4_14evm"]
+[ext_resource type="Texture2D" uid="uid://bs7bla1h3mhfk" path="res://TransparentBrokenH.png" id="5_ed4nj"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_cbtnu")
+
+[node name="LoseBg2" type="Sprite2D" parent="."]
+position = Vector2(766, 434)
+scale = Vector2(0.882292, 0.919444)
+texture = ExtResource("2_6mmkj")
+
+[node name="TransparentBrokenH" type="Sprite2D" parent="."]
+position = Vector2(592, 176)
+texture = ExtResource("5_ed4nj")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 32.0
+offset_top = 144.0
+offset_right = 1152.0
+offset_bottom = 561.0
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0.933333, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("3_ed4nj")
+theme_override_font_sizes/font_size = 100
+text = "YOU LOSE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+offset_left = 32.0
+offset_top = 464.0
+offset_right = 568.0
+offset_bottom = 619.0
+theme = ExtResource("4_14evm")
+text = "Back to main menu"
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 584.0
+offset_top = 461.0
+offset_right = 1120.0
+offset_bottom = 614.0
+theme = ExtResource("4_14evm")
+text = "Restart"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

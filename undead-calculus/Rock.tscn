@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://4wu3bnw456ld"]
+
+[ext_resource type="Script" uid="uid://c7prldtn6geg2" path="res://rock.gd" id="1_55vvm"]
+[ext_resource type="Texture2D" uid="uid://dlnqofrodp8cs" path="res://RockSprite.png" id="2_ru2eq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ru2eq"]
+atlas = ExtResource("2_ru2eq")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8rklr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ru2eq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_55vvm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ru2eq"]
+radius = 6.0
+
+[node name="Rock" type="CharacterBody2D" groups=["Rock"]]
+scale = Vector2(3, 3)
+collision_mask = 0
+script = ExtResource("1_55vvm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8rklr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.35, 0.35)
+shape = SubResource("CircleShape2D_55vvm")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(0.75, 0.75)
+shape = SubResource("CircleShape2D_ru2eq")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
